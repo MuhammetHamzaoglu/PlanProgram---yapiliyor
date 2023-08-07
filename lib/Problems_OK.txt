@@ -1,0 +1,7 @@
+1. ders ekleme sayfasından çıkarken program ağır ve hatalı çalışıyor:
+daha sonra bakılacak
+
+2. ders eklem yapılmalı, OK
+
+3. eklen ders localde saklanmalı:
+yapılamadı, daha sonra bakılacak

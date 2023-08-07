@@ -1,0 +1,3 @@
+sayfa içeriğini değiştiren değişken: bodyContent
+ana sayfayı oluşturan değişken: rootPage
+
