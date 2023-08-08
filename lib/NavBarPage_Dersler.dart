@@ -1,93 +1,11 @@
-import 'dart:async';
-import 'dart:js_util';
 import 'package:flutter/material.dart';
+import 'Variable.dart';//
 
 //--------------------------------Değişkenler-------------------------------------------
-enum ButtonNavBar { Dersler, Program } // Nav bar Sayfa geçişleri için anlamlı numaralandırma yapıldı
-
-int currentPageIndex = 0;
-int haftaGunleri = 0;
-PageController pageController = PageController(initialPage: 0, viewportFraction: 0.4);
-
-List<String> buttonNames = [
-  'Pazartesi',
-  'Salı',
-  'Çarşamba',
-  'Perşembe',
-  'Cuma',
-  'Cumartesi',
-  'Pazar',
-];
-
-List<Color> pageColors = [
-  Colors.red.shade200,
-  Colors.yellow.shade200,
-  Colors.blue.shade200,
-  Colors.green.shade200,
-  Colors.orange.shade200,
-  Colors.purple.shade200,
-  Colors.cyan.shade200,
-];
-
-List<Ders> dersListesi = []; // Yeni eklenen dersleri burada saklayacağız
-
-//değişkenler_S
-class Ders {
-  String dersAdi;
-  String dersTarihi;
-  String dersSaati;
-
-  Ders(this.dersAdi, this.dersTarihi, this.dersSaati);
-}
-
-final TextEditingController dersAdi = TextEditingController();
-final TextEditingController dersTarihi = TextEditingController();
-final TextEditingController dersSaati = TextEditingController();
-//değişkenler_E
-//-------------------------------------Değişkenler--------------------------------------
 
 Widget bodyContent = NavBarButton1();
 //Widget NavBarButton1Body = Haftalar();
 
-class NavBarPages_Class extends StatefulWidget {
-  const NavBarPages_Class({super.key});
-
-  @override
-  State<NavBarPages_Class> createState() => _NavBarPages_ClassState();
-}
-
-class _NavBarPages_ClassState extends State<NavBarPages_Class> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: bodyContent, // Varsayılan Sayfa: AnaSayfa()
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.green[200],
-        type: BottomNavigationBarType.fixed,
-        //unselectedItemColor: ColFdors.red.withOpacity(1),
-        //selectedItemColor: Colors.yellow,
-        selectedFontSize: 14, //ıcon ile text arası medafe
-        unselectedFontSize: 14, // tüm textin boyutu
-        iconSize: 30,
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.book_sharp), label: "Dersler"),
-          BottomNavigationBarItem(icon: Icon(Icons.rule_rounded), label: "Progam"),
-        ], //
-        onTap: ((value) {
-          setState(() {
-            if (value == ButtonNavBar.Dersler.index) {
-              bodyContent = NavBarButton1();
-            } else if (value == ButtonNavBar.Program.index) {
-              bodyContent = NavBarButton2();
-            }
-          }); //setState, sayfayı yeniler, Build'i yeniden başatır
-        }),
-      ),
-    );
-  }
-} //
-
-// BottomNavigationBar sayfaları burada ayarlanır
 
 class NavBarButton1 extends StatefulWidget {
   const NavBarButton1({super.key});
@@ -240,40 +158,3 @@ class _DersEkleState extends State<DersEkle> {
     );
   }
 }
-
-class NavBarButton2 extends StatefulWidget {
-  const NavBarButton2({super.key});
-
-  @override
-  State<NavBarButton2> createState() => _NavBarButton2State();
-}
-
-class _NavBarButton2State extends State<NavBarButton2> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Padding(
-          padding: EdgeInsets.only(left: 10),
-          child: Text("Plan Program"),
-        ),
-      ),
-      body: Container(
-        color: Colors.blue[200],
-        child: Center(
-          //
-          child: Text(
-            "Program",
-            style: TextStyle(
-              fontSize: 40,
-              color: Colors.black,
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-// BottomNavigationBar sayfalarından "Add+" Programa ekle_start
-

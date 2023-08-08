@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'NavBar_Page.dart';
+import 'rootPage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +19,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
-      home: NavBarPages_Class(),
+      home: rootPage,
     );
   }
 }
+
